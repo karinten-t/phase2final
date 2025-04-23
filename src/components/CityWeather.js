@@ -1,19 +1,18 @@
 import React from 'react';
 
-function CityWeather({ weather }) {
-  if (!weather) return <div className="no-data">No city selected or found</div>;
-
+function Details({weather}) {
   return (
-    <div className="weather-card">
-      <h2>{weather.city}</h2>
-      <div className="weather-details">
-        <p>Temperature: {weather.temperature}</p>
-        <p>Conditions: {weather.conditions}</p>
-        <p>Humidity: {weather.humidity}</p>
-        <p>Wind: {weather.wind}</p>
-      </div>
+    <div>
+         {weather?.city?.name && (
+        <div>
+            <p>{weather.city.name}</p>
+            <p>{weather.list[0].main.temp}</p>
+            <p>{weather.list[0].weather[0].main}</p>
+            <p>{weather.list[0].weather[0].description}</p>
+        </div>
+    )}
     </div>
-  );
+  )
 }
 
-export default CityWeather;
+export default Details
